@@ -12,6 +12,7 @@ class DemoApplication
 
 fun main(args: Array<String>) {
        var temp = true
+         println(LocalDateTime.now().second)
        while(temp){
            if(LocalDateTime.now().second == 0){
                println(LocalDateTime.now())
@@ -26,31 +27,40 @@ fun main(args: Array<String>) {
            Thread.sleep(60000)
            timer()
        }catch (e : Exception){
+           timer()
            e.printStackTrace()
        }
    }
 
    fun timer(){
-       val chatId ="-256666998"
-       //val chatId ="994885316"
         try {
-           val obj = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=$chatId&text=쉬세요")
-           val conn = obj.openConnection() as HttpURLConnection
-           conn.requestMethod = "GET"
             if(LocalDateTime.now().hour == 10 && LocalDateTime.now().minute == 0 && LocalDate.now().dayOfWeek.value <6) {
+                val obj = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=-256666998&text=쉬세요")
+                val conn = obj.openConnection() as HttpURLConnection
+                conn.requestMethod = "GET"
                 InputStreamReader(conn.inputStream)
             }
+            if(LocalDateTime.now().hour == 10 && LocalDateTime.now().minute == 18 && LocalDate.now().dayOfWeek.value <6 && LocalDate.now().dayOfWeek.value != 3) {
+                val obj3 = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=-256666998&text=오늘 점심 뭐드실까요?")
+                val conn3 = obj3.openConnection() as HttpURLConnection
+                conn3.requestMethod = "GET"
+                InputStreamReader(conn3.inputStream)
+            }
             if(LocalDateTime.now().hour == 15 && LocalDateTime.now().minute == 0 && LocalDate.now().dayOfWeek.value <5){
+                val obj = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=-256666998&text=쉬세요")
+                val conn = obj.openConnection() as HttpURLConnection
+                conn.requestMethod = "GET"
                 InputStreamReader(conn.inputStream)
             }
             if(LocalDate.now().dayOfWeek.value == 5 && LocalDateTime.now().hour == 15 && LocalDateTime.now().minute == 30){
-                val obj2 = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=$chatId&text=청소시작!")
+                val obj2 = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=-256666998&text=청소시작!")
                 val conn2 = obj2.openConnection() as HttpURLConnection
                 conn2.requestMethod = "GET"
                 InputStreamReader(conn2.inputStream)
             }
                 test()
          }catch (e : Exception){
+            test()
            e.printStackTrace()
          }
        }
