@@ -58,7 +58,12 @@ fun main(args: Array<String>) {
                 conn2.requestMethod = "GET"
                 InputStreamReader(conn2.inputStream)
             }
-                test()
+            if(LocalDateTime.now().hour == 18 && LocalDateTime.now().minute == 0 && LocalDate.now().dayOfWeek.value <5){
+                val obj4 = URL("https://api.telegram.org/bot1294362339:AAG6DDF3sxo7E8DpONjmuPfU8Jib50j1Ba4/sendMessage?chat_id=-256666998&text=퇴근하세요")
+                val conn4 = obj4.openConnection() as HttpURLConnection
+                InputStreamReader(conn4.inputStream)
+            }
+            test()
          }catch (e : Exception){
             test()
            e.printStackTrace()
